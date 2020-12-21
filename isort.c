@@ -1,5 +1,6 @@
 #include <stdio.h>
 #define numOfElements 50
+#define buffLen 120
 
 void shift_element(int *arr, int i){
 
@@ -25,7 +26,7 @@ void insertion_sort(int *arr, int len){
     }
         
 }
-
+/*
 void fromUser(int *arr, int len){
     for(int i=0; i<len; i++){
         printf("please enter number");
@@ -33,6 +34,7 @@ void fromUser(int *arr, int len){
         
     }
 }
+*/
 
 void printArray(int *arr, int len){
 
@@ -44,12 +46,14 @@ void printArray(int *arr, int len){
 
 int main(int argc, char const *argv[]) {
 
-    int elements[9] = {7,3,4,6,1,78,2,5,9};
-    //fromUser(elements, 5);
-    printArray(elements, 9);
-    insertion_sort(elements, 9);
-    printf("\n");
-    printArray(elements, 9);
+    int numArray[numOfElements];
+    for(int i=0; i<numOfElements; i++)
+    {
+    	fscanf(stdin, "%2d", numArray+i);
+    }
+    
+    insertion_sort(numArray, numOfElements);
+    printArray(numArray, numOfElements);
     
     return 0;
 }

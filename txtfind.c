@@ -3,12 +3,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include "txtHeader.h"
-#define lineLength 256
+#define lineLength 60
+#define textLen 64000
 
 
 int print_words(char *line, FILE *myFile, char *wordToFind){
     
-    while(fgets(line, lineLength, myFile)) //there is another line in the file
+    while(fgets(line, lineLength, stdin)) //there is another line in the file
     { 
         char *nextWord = strtok(line, " \n\t");
       
@@ -26,14 +27,13 @@ int print_words(char *line, FILE *myFile, char *wordToFind){
     return 0;
 }
 
-int print_lines(char *line, FILE *myFile, char *wordToFind){
+int print_lines(char *line, char *wordToFind){
 
     int indexLine=0;
     int indexWord =0;
     int lettersCounter = 0;
     
-    // while(fgets(line, lineLength, myFile)) //there is another line in the file
-    // { 
+ 
     while(*(line+indexLine) != '\0' && *(wordToFind+indexWord) != '\0')
     {
         if(*(line+indexLine) == *(wordToFind+indexWord))
@@ -58,27 +58,6 @@ int print_lines(char *line, FILE *myFile, char *wordToFind){
     return 0;
 }
 
-
-// int print_words(char *line, FILE *myFile, char *wordToFind){
-
-//     while(fgets(line, lineLength, myFile)) { //there is another line in the file
-//         char *nextWord;
-//         nextWord = strtok(NULL, " \n\t");
-//         if(similar(nextWord, wordToFind, 1)){
-//             printf("%s", nextWord);
-            
-//         }
-
-//         while(*(nextWord)){ //there is another word in the line
-//             nextWord = strtok (NULL, " ");
-//             if(similar(nextWord, wordToFind, 1)){
-//                 printf("%s", nextWord);
-                
-//             }
-//         }
-//     }
-//     return 0;
-// }
 
 
 int similar(char *tempWord, char *theWord, int n)
@@ -121,16 +100,15 @@ int similar(char *tempWord, char *theWord, int n)
 }
 
 
-int main(int argc, char const *argv[])
+int main(int argc, char const *argv[])  
 {
 
-    FILE *myFile;
-    char line[lineLength];
 
-    myFile = fopen("C:\\Users\\Noa\\Desktop\\ex3\\find_input.txt", "r"); //open the file to read
-    fgets(line, lineLength, myFile); //gets the next (in this case first) line (line array == the first line)
-    
-    
+    //FILE *myFile;
+    char line[lineLength];
+   
+    fgets(line, lineLength, stdin); //gets the next (in this case first) line (line array == the first 							line)
+
     char * lineOne; 
     lineOne = strtok(line," \n\t"); //lineOne now points to the first letter in the first line that line array holds("c")
     int i=0;
@@ -148,12 +126,12 @@ int main(int argc, char const *argv[])
     char *option = lineOne; //option now points where lineOne points = the second word in the line
 
 
-    fgets(line, lineLength, myFile); //skipping over the empty second line in the text
+    fgets(line, lineLength, stdin); //skipping over the empty second line in the text
     if(*option == 'a')
     {
-        //call func1 - print_lines
-        while(fgets(line, lineLength, myFile)){
-            if(print_lines(line, myFile, word)){
+       
+        while(fgets(line, lineLength, stdin)){ //option a - printing lines
+            if(print_lines(line, word)){
                 printf("%s", line);
             }
         }
@@ -161,11 +139,10 @@ int main(int argc, char const *argv[])
     }
     if(*option == 'b')
     {
-        //call func2 - print_similar_words
-        print_words(line, myFile, word);
+        
+        print_words(line, stdin, word); //option b - printing words
     }
     
-    fclose(myFile);
 
     return 0;
 }
