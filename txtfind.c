@@ -104,7 +104,6 @@ int main(int argc, char const *argv[])
 {
 
 
-    //FILE *myFile;
     char line[lineLength];
    
     fgets(line, lineLength, stdin); //gets the next (in this case first) line (line array == the first 							line)

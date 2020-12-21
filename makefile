@@ -19,5 +19,5 @@ sortArr.o: isort.c
 
 
 clean:
-	rm -f main *.o mainP1 mainP2
+	rm -f main *.o isort txtfind
 	
