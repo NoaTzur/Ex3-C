@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "txtHeader.h"
 #define lineLength 256
+#define textLen 260
 
 
 int print_words(char *line, FILE *myFile, char *wordToFind){
@@ -59,27 +60,6 @@ int print_lines(char *line, FILE *myFile, char *wordToFind){
 }
 
 
-// int print_words(char *line, FILE *myFile, char *wordToFind){
-
-//     while(fgets(line, lineLength, myFile)) { //there is another line in the file
-//         char *nextWord;
-//         nextWord = strtok(NULL, " \n\t");
-//         if(similar(nextWord, wordToFind, 1)){
-//             printf("%s", nextWord);
-            
-//         }
-
-//         while(*(nextWord)){ //there is another word in the line
-//             nextWord = strtok (NULL, " ");
-//             if(similar(nextWord, wordToFind, 1)){
-//                 printf("%s", nextWord);
-                
-//             }
-//         }
-//     }
-//     return 0;
-// }
-
 
 int similar(char *tempWord, char *theWord, int n)
 {
@@ -124,10 +104,13 @@ int similar(char *tempWord, char *theWord, int n)
 int main(int argc, char const *argv[])
 {
 
+    char text[textLen];
+    scanf("%s", text);
+
     FILE *myFile;
     char line[lineLength];
 
-    myFile = fopen("C:\\Users\\Noa\\Desktop\\ex3\\find_input.txt", "r"); //open the file to read
+    myFile = fopen(text, "r"); //open the file to read
     fgets(line, lineLength, myFile); //gets the next (in this case first) line (line array == the first line)
     
     
