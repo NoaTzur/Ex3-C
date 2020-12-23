@@ -62,9 +62,13 @@ int print_lines(char *line, char *wordToFind){
 
 int similar(char *tempWord, char *theWord, int n)
 {
-
+    
     int lenTemp = strlen(tempWord);
     int lenPerm = strlen(theWord);
+    
+    if(*(tempWord + lenTemp-1) == '\r'){
+    	lenTemp--;
+    }
     
     int diffInLen = lenPerm - lenTemp;
     if(abs(diffInLen) > n)
