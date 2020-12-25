@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "txtHeader.h"
-#define lineLength 60
+#define lineLength 256
 #define textLen 64000
 
 
@@ -125,7 +125,7 @@ int main(int argc, char const *argv[])
         i++;
     }
 
-    lineOne = strtok (NULL, " \n\t"); //takes the next word in the same line, lineOne points to it
+    lineOne = strtok(NULL, " \n\t"); //takes the next word in the same line, lineOne points to it
     char *option = lineOne; //option now points where lineOne points = the second word in the line
 
 
